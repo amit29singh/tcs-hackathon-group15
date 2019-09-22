@@ -1,0 +1,18 @@
+---
+
+- hosts: host2
+
+  become: yes
+
+  roles:
+      - {role: role-git}
+      - {role: role-java}
+      - {role: role-docker}
+      - {role: role-wget}
+
+
+  tasks:
+  - name: Upgrade all yum packages ansible.
+    yum:
+      name: "*"
+      state: latest

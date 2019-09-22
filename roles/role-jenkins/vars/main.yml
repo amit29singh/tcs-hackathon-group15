@@ -1,0 +1,12 @@
+---
+# vars file for role-jenkins
+jenkins_dest: /opt/jenkins
+jenkins_lib: /var/lib/jenkins
+port: 8081
+prefix: '"--prefix=/jenkins/"'
+jenkins:
+  cli_dest: '{{ jenkins_dest }}/jenkins-cli.jar' # Jenkins CLI destination
+  updates_dest: '{{ jenkins_dest }}/updates_jenkins.json' # Jenkins updates file
+jenkins_api_url: "http://localhost:{{ port }}{{ prefix }}"
+jenkins_cli_cmd: "java -jar {{ jenkins.cli_dest }} -s {{ jenkins_api_url }}"
+java_home: /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.222.b10-1.el7_7.x86_64

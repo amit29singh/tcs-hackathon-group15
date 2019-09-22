@@ -1,0 +1,9 @@
+---
+
+- name: ansible create directory work
+
+  file:
+
+    path: /work
+
+    state: directory

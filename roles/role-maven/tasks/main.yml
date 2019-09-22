@@ -1,0 +1,6 @@
+---
+# Maven install role
+- name: Install maven
+  yum: 
+    name: maven
+    state: installed

@@ -1,0 +1,31 @@
+---
+- hosts: host2
+  become: yes
+  roles:
+      - {role: role-git}
+      - {role: role-java}
+      - {role: role-maven}
+      - {role: role-docker-compose}
+      - {role: role-wget}
+  
+  tasks:
+  - name: Upgrade all yum packages ansible.
+    yum:
+      name: "*"
+      state: latest
+
+  - name: Copy the docker-compose nexus
+    copy: 
+      src: /etc/ansible/nexus-docker/docker-compose.yml
+      dest: /home/desai_ajay_hnr/docker-compose.yml
+      mode: '0777'
+      
+  - name: Tear down existing services
+    docker_compose:
+      project_src: /home/desai_ajay_hnr
+      state: absent
+
+  - name: Create and start services
+    docker_compose:
+      project_src: /home/desai_ajay_hnr
+      register: output
