@@ -15,7 +15,7 @@
     yum:
       name: "*"
       state: latest
-	  
+  
 - hosts: host2
   become: yes
   roles:
@@ -38,7 +38,7 @@
     command: docker-compose up -d --build
     args:
       chdir: /home/desai_ajay_hnr
-	  
+  
 - hosts: host3
   become: yes
   roles:
